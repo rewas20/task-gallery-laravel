@@ -1,0 +1,55 @@
+
+
+.picture{
+    min-height: 200px;
+}
+
+.dashed {
+    border-style: dashed !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+.clickable-with-hover-black {
+    cursor: pointer;
+}
+
+.clickable-with-hover-black:hover {
+    color: black;
+    transition: all 0.5s;
+}
+
+.pop-up {
+
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: -100%;
+    left: 0;
+    z-index: 999 !important;
+    transition: all 0.8s;
+    opacity: 0;
+}
+
+.dark_pop_up {
+    background-color: #00000052;
+    z-index: 1000 !important;
+}
+
+.standard-box {
+    min-height: 200px;
+    width: 400px;
+}
+
+.standard-box-z-index {
+    position: relative;
+    z-index: 99999 !important;
+}
+
+.show-pop-up {
+    top:0;
+    transform: none;
+    opacity: 1;
+}
+

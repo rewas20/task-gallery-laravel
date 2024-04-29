@@ -1,4 +1,7 @@
 import './bootstrap';
+import './album';
+import 'bootstrap';
+import '@popperjs/core';
 
 import Alpine from 'alpinejs';
 
