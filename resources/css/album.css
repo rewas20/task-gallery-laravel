@@ -53,3 +53,56 @@
     opacity: 1;
 }
 
+.hover-albums,.hover-create{
+
+    transition: all 0.5s;
+}
+.hover-create:hover,.hover-albums:hover{
+    transform: scale(1.1);
+}
+.hover-edit {
+    transition: 0.2s;
+}
+.hover-edit:hover {
+transform: scale(1.2);
+   animation: pen 0.3s ease-in-out 0.1s infinite alternate-reverse;
+
+}
+.delete:hover {
+
+    color: maroon;
+
+}
+
+.flag {
+    min-width: 50px;
+    height: 50px;
+}
+
+@keyframes pen
+{
+    0%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(-30deg);
+
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hover-albums:hover,.hover-create:hover{
+
+        transform: scale(1);
+    }
+}
+@media (max-width: 500px) {
+
+    .standard-box{
+
+        width: 95% !important;
+        margin: auto;
+    }
+}
+

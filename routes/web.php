@@ -16,20 +16,24 @@ use App\Http\Controllers\AlbumController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('albums.index');
 });
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+ */
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::prefix('albums')->group(function () {
+Route::middleware('auth')->prefix('albums')->group(function () {
     Route::get('/', [AlbumController::class, 'index'])->name('albums.index');
+    Route::post('/store', [AlbumController::class, 'store'])->name('albums.store');
+    Route::post('/{album}/update', [AlbumController::class, 'update'])->name('albums.update');
+    Route::get('/{album}', [AlbumController::class, 'show'])->name('albums.show');
+    Route::delete('/{album}', [AlbumController::class, 'destroy'])->name('albums.delete');
 
 });
 
