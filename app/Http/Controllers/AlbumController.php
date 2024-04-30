@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use App\Http\Requests\Album\StoreAblumRequest;
+use App\Http\Requests\Album\UpdateAblumRequest;
+use App\Http\Requests\Album\SelectionAblumRequest;
 
 class AlbumController extends Controller
 {
@@ -16,20 +19,19 @@ class AlbumController extends Controller
         return view('albums.index', compact('albums'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('albums.create');
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAblumRequest $request)
     {
-        //
+        auth()->user()->albums()->create(
+            [
+                "name"=>$request->name,
+            ]
+        );
+
+        return to_route('albums.index')->with('success','Album is added successfully.');
     }
 
     /**
@@ -40,20 +42,29 @@ class AlbumController extends Controller
         return view('albums.show', compact('album'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Album $album)
-    {
-        return view('albums.edit', compact('album'));
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Album $album)
+    public function update(UpdateAblumRequest $request, Album $album)
     {
-        //
+        $album->update(
+            [
+                "name"=>$request->name,
+            ]
+        );
+
+        return to_route('albums.show',$album)->with('success','Name of album is updated successfully.');
+    }
+    public function move(SelectionAblumRequest $request, Album $album)
+    {
+        $selection = Album::find($request->selection);
+
+        foreach ($album->getMedia('album') as $media) {
+            $selection->addMedia($media->getPath())->toMediaCollection('album');
+        }
+        $album->delete();
+        return to_route('albums.index')->with('success','Pictures is moved successfully.');
     }
 
     /**
@@ -61,6 +72,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+        return to_route('albums.index',$album)->with('success','Album is deleted successfully.');
     }
 }
