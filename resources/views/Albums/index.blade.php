@@ -68,10 +68,10 @@
 
                                 <form action="{{ route('albums.move',$album) }}" method="POST">
                                     @csrf
-                                    <select class="form-select my-3" aria-label="Default select example" name="selection">
+                                    <select class="my-3" name="selection">
                                         <option selected>Select a folder</option>
                                         @foreach ($albums as $option )
-                                            @if($album->id != $option->id)
+                                            @if($album->name != $option->name)
                                                 <option value="{{ $option->id }}">{{ $option->name }}</option>
                                             @endif
                                         @endforeach
