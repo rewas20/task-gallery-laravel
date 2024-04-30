@@ -17,7 +17,7 @@ use App\Http\Controllers\AlbumController;
 */
 
 Route::get('/', function () {
-    return view('albums.index');
+    return to_route('albums.index');
 });
 
 /* Route::get('/dashboard', function () {

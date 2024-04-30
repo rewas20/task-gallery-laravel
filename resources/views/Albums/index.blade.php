@@ -39,11 +39,11 @@
                     <div class="position-absolute top-0 end-0 m-3 rounded-end-circle flag d-flex position-relative justify-content-center align-items-center text-danger px-2 fs-2">
 
                             @if($album->getMedia('album')->first())
-                                <button onclick="deletFolder()">
+                                <button id="delete-btn">
                                     <i class="bi bi-trash-fill hover-edit delete clickable "></i>
                                 </button>
                             @else
-                                <form action="{{ route('albums.delete',$album) }}" method="POST">
+                                <form action="{{ route('albums.delete',$album->id) }}" method="POST">
 
                                     @csrf
                                     @method('delete')
@@ -71,9 +71,7 @@
                                     <select class="my-3" name="selection">
                                         <option selected>Select a folder</option>
                                         @foreach ($albums as $option )
-                                            @if($album->name != $option->name)
                                                 <option value="{{ $option->id }}">{{ $option->name }}</option>
-                                            @endif
                                         @endforeach
 
                                     </select>
@@ -98,7 +96,7 @@
                                     <button class="btn btn-danger">Delete all pictures</button>
                                 </form>
 
-                                <button onclick="move()" class="btn btn-success">Move to another album</button>
+                                <button id="move-btn" class="btn btn-success">Move to another album</button>
 
                         </div>
                     </div>
@@ -161,14 +159,15 @@
 
 
 <script>
+    let btnDelete = document.getElementById('delete-btn');
     let confirm_popup = document.getElementById('confirm_pop_up');
     let confirm_darkPopup = document.getElementById('dark_confirm_pop_up');
     let confirm_closePopup = document.getElementById('close_confirm_pop_up');
 
-    function deletFolder(){
+    btnDelete.addEventListener('click', function(){
         confirm_popup.classList.add('show-pop-up');
 
-    }
+    });
 
     confirm_darkPopup.addEventListener('click', function(){
         confirm_popup.classList.remove('show-pop-up');
@@ -183,14 +182,15 @@
 </script>
 
 <script>
+    let moveBtn = document.getElementById('move-btn');
     let move_popup = document.getElementById('move_pop_up');
     let move_darkPopup = document.getElementById('dark_move_pop_up');
     let move_closePopup = document.getElementById('close_move_pop_up');
 
-    function move(){
+    moveBtn.addEventListener('click', function(){
         confirm_popup.classList.remove('show-pop-up');
         move_popup.classList.add('show-pop-up');
-    }
+    });
 
     move_darkPopup.addEventListener('click', function(){
         move_popup.classList.remove('show-pop-up');

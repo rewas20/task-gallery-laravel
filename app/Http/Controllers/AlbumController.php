@@ -15,7 +15,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = auth()->user()->albums()->orderBy('id','desc')->get();
+        $albums = auth()->user()->albums;
         return view('albums.index', compact('albums'));
     }
 
