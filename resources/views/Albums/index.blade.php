@@ -77,30 +77,30 @@
     </div>
 
 
+    <script>
+        let addBtn = document.getElementById('add-album');
+        let editBtn = document.getElementById('edit-album');
+        let popup = document.getElementById('pop_up');
+        let darkPopup = document.getElementById('dark_pop_up');
+        let closePopup = document.getElementById('close_pop_up');
+
+
+
+        addBtn.addEventListener('click', function(){
+            popup.classList.add('show-pop-up');
+        });
+
+        darkPopup.addEventListener('click', function(){
+            popup.classList.remove('show-pop-up');
+
+        })
+        closePopup.addEventListener('click', function(){
+            popup.classList.remove('show-pop-up');
+        });
+
+
+
+    </script>
 </x-app-layout>
 
 
-<script>
-    let addBtn = document.getElementById('add-album');
-    let editBtn = document.getElementById('edit-album');
-    let popup = document.getElementById('pop_up');
-    let darkPopup = document.getElementById('dark_pop_up');
-    let closePopup = document.getElementById('close_pop_up');
-
-
-
-    addBtn.addEventListener('click', function(){
-        popup.classList.add('show-pop-up');
-    });
-
-    darkPopup.addEventListener('click', function(){
-        popup.classList.remove('show-pop-up');
-
-    })
-    closePopup.addEventListener('click', function(){
-        popup.classList.remove('show-pop-up');
-    });
-
-
-
-</script>

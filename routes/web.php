@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PictureController;
 use App\Http\Controllers\AlbumController;
 
 /*
@@ -34,6 +35,11 @@ Route::middleware('auth')->prefix('albums')->group(function () {
     Route::post('/{album}/update', [AlbumController::class, 'update'])->name('albums.update');
     Route::get('/{album}', [AlbumController::class, 'show'])->name('albums.show');
     Route::delete('/{album}', [AlbumController::class, 'destroy'])->name('albums.delete');
+
+});
+Route::middleware('auth')->prefix('pictures')->group(function () {
+    Route::post('/store/{album}', [PictureController::class, 'store'])->name('pictures.store');
+    Route::delete('/delete/{id}', [PictureController::class, 'destroy'])->name('pictures.delete');
 
 });
 
