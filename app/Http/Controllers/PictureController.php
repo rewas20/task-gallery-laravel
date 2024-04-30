@@ -10,14 +10,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class PictureController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -36,30 +28,6 @@ class PictureController extends Controller
             return to_route('albums.show',$album)->with('error','No pictures were selected.');
         }
 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**

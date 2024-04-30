@@ -79,6 +79,10 @@ transform: scale(1.2);
     height: 50px;
 }
 
+.move {
+    z-index: 99999;
+}
+
 @keyframes pen
 {
     0%{

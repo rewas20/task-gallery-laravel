@@ -33,26 +33,30 @@
                     <i class="bi bi-image-fill fw-bolder fs-2"></i>
                 </div>
             </div>
+
+
             @foreach ($album->getMedia('album') as $pic )
             <div class="col-sm-6 col-md-4 col-xl-3  px-3 py-2 my-2 picture position-relative ">
-                    <div class=" border border-2 border-ronud bg-white shadow rounded p-2 h-100 d-flex flex-column position-relative justify-content-center align-items-center fs-3 hover-albums" title="{{ $pic->file_name }}">
-                        <span class="mt-4">
-                            <img src="{{ $pic->getUrl()}}" alt="">
 
+                    <div class=" border border-2 border-ronud bg-white shadow rounded h-100 p-2 d-flex flex-column position-relative justify-content-center align-items-center clickable fs-3 hover-albums" title="created at: {{ $album->created_at }}">
+                        <span>
+                            <img src="{{ $pic->getUrl() }}" alt="">
                         </span>
                         <span class="mt-4">
                             {{ $pic->file_name }}
 
                         </span>
                     </div>
+
                 <div class="position-absolute top-0 end-0 m-3 rounded-end-circle flag d-flex position-relative justify-content-center align-items-center text-danger px-2 fs-2">
-                    <form action="{{ route('pictures.delete',$pic->id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button>
-                            <i class="bi bi-trash-fill hover-edit delete clickable "></i>
-                        </button>
-                    </form>
+
+                        <form action="{{ route('pictures.delete',$pic->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button>
+                                <i class="bi bi-trash-fill hover-edit delete clickable "></i>
+                            </button>
+                        </form>
                 </div>
 
             </div>
@@ -77,7 +81,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+            </div>
 
 
     </div>

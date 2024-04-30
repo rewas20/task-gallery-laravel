@@ -6,6 +6,7 @@ use App\Models\Album;
 use Illuminate\Http\Request;
 use App\Http\Requests\Album\StoreAblumRequest;
 use App\Http\Requests\Album\UpdateAblumRequest;
+use App\Http\Requests\Album\SelectionAblumRequest;
 
 class AlbumController extends Controller
 {
@@ -54,6 +55,16 @@ class AlbumController extends Controller
         );
 
         return to_route('albums.show',$album)->with('success','Name of album is updated successfully.');
+    }
+    public function move(SelectionAblumRequest $request, Album $album)
+    {
+        $selection = Album::find($request->selection);
+
+        foreach ($album->getMedia('album') as $media) {
+            $selection->addMedia($media->getPath())->toMediaCollection('album');
+        }
+        $album->delete();
+        return to_route('albums.index')->with('success','Pictures is moved successfully.');
     }
 
     /**

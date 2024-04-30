@@ -35,6 +35,7 @@ Route::middleware('auth')->prefix('albums')->group(function () {
     Route::post('/{album}/update', [AlbumController::class, 'update'])->name('albums.update');
     Route::get('/{album}', [AlbumController::class, 'show'])->name('albums.show');
     Route::delete('/{album}', [AlbumController::class, 'destroy'])->name('albums.delete');
+    Route::post('/move/{album}', [AlbumController::class, 'move'])->name('albums.move');
 
 });
 Route::middleware('auth')->prefix('pictures')->group(function () {
