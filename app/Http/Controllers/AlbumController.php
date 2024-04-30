@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use App\Http\Requests\Album\StoreAblumRequest;
+use App\Http\Requests\Album\UpdateAblumRequest;
 
 class AlbumController extends Controller
 {
@@ -44,7 +45,7 @@ class AlbumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Album $album)
+    public function update(UpdateAblumRequest $request, Album $album)
     {
         $album->update(
             [

@@ -22,7 +22,8 @@
             <div class="col-sm-6 col-md-4 col-xl-3 p-3 my-3 picture">
                 <div class=" border border-3 border-secondary rounded dashed h-100 d-flex justify-content-center align-items-center clickable hover-create" id="add-picture" >
                     <div class="fs-1 fw-bolder text-secondary">
-                        <i class="bi bi-plus-square-dotted "></i>
+                        <i class="bi bi-card-image"></i>
+                        <span>Add</span>
                     </div>
                 </div>
                 <input id="file-upload" name="file" type="file" accept="image/*" hidden/>
