@@ -101,7 +101,7 @@
             <div>
                 <x-input-label for="new_album" :value="__('Album')" />
                 <x-text-input id="new_album" class="block mt-1 w-full input" type="text" name="name" maxLength="255" max="1" :value="old('name',$album->name)" placeholder="Name"  autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <div class="text-center ">
